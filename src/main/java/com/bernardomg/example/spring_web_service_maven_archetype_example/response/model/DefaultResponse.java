@@ -22,35 +22,45 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.spring_web_service_maven_archetype_example;
+package com.bernardomg.example.spring_web_service_maven_archetype_example.response.model;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import lombok.Data;
+import lombok.NonNull;
 
 /**
- * Application runnable class. This allows Spring Boot to run the application.
+ * Default implementation of the response.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  *
+ * @param <T>
+ *            response content type
  */
-@SpringBootApplication
-public class Application {
+@Data
+public class DefaultResponse<T> implements Response<T> {
 
     /**
-     * Runnable main method.
-     *
-     * @param args
-     *            execution parameters
+     * Response content.
      */
-    public static void main(final String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+    @NonNull
+    private T content;
 
     /**
      * Default constructor.
      */
-    public Application() {
+    public DefaultResponse() {
         super();
+    }
+
+    /**
+     * Constructs a response with the specified content.
+     *
+     * @param cont
+     *            content
+     */
+    public DefaultResponse(@NonNull final T cont) {
+        super();
+
+        content = cont;
     }
 
 }

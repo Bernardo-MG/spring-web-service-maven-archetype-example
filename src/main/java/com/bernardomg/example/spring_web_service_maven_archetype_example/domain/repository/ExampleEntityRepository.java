@@ -22,35 +22,19 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.spring_web_service_maven_archetype_example;
+package com.bernardomg.example.spring_web_service_maven_archetype_example.domain.repository;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.bernardomg.example.spring_web_service_maven_archetype_example.domain.model.PersistentExampleEntity;
 
 /**
- * Application runnable class. This allows Spring Boot to run the application.
+ * Spring-JPA repository for {@link PersistentExampleEntity}.
+ * <p>
+ * This is a simple repository just to allow the endpoints querying the entities they are asked for.
  *
  * @author Bernardo Mart&iacute;nez Garrido
- *
  */
-@SpringBootApplication
-public class Application {
-
-    /**
-     * Runnable main method.
-     *
-     * @param args
-     *            execution parameters
-     */
-    public static void main(final String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
-
-    /**
-     * Default constructor.
-     */
-    public Application() {
-        super();
-    }
+public interface ExampleEntityRepository extends JpaRepository<PersistentExampleEntity, Integer> {
 
 }

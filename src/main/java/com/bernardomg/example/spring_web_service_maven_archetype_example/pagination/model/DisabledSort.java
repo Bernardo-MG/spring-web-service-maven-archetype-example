@@ -22,35 +22,37 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.spring_web_service_maven_archetype_example;
+package com.bernardomg.example.spring_web_service_maven_archetype_example.pagination.model;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import lombok.Data;
 
 /**
- * Application runnable class. This allows Spring Boot to run the application.
+ * Disabled sorted data request. This serves as a null object to disable sorting.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  *
  */
-@SpringBootApplication
-public class Application {
+@Data
+public final class DisabledSort implements Sort {
 
     /**
-     * Runnable main method.
-     *
-     * @param args
-     *            execution parameters
+     * Singleton for disabled sort.
      */
-    public static void main(final String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+    public static final Sort INSTANCE  = new DisabledSort();
 
     /**
-     * Default constructor.
+     * Default direction.
      */
-    public Application() {
-        super();
-    }
+    private final Direction  direction = Direction.ASC;
+
+    /**
+     * Default property.
+     */
+    private final String     property  = "";
+
+    /**
+     * Disabled sort flag.
+     */
+    private final Boolean    sorted    = false;
 
 }

@@ -22,35 +22,26 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.spring_web_service_maven_archetype_example;
+package com.bernardomg.example.spring_web_service_maven_archetype_example.test.config.annotation;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-/**
- * Application runnable class. This allows Spring Boot to run the application.
- *
- * @author Bernardo Mart&iacute;nez Garrido
- *
- */
-@SpringBootApplication
-public class Application {
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import org.springframework.transaction.annotation.Transactional;
 
-    /**
-     * Runnable main method.
-     *
-     * @param args
-     *            execution parameters
-     */
-    public static void main(final String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+import com.bernardomg.example.spring_web_service_maven_archetype_example.Application;
 
-    /**
-     * Default constructor.
-     */
-    public Application() {
-        super();
-    }
+@SpringJUnitConfig
+@SpringBootTest(classes = Application.class)
+@Transactional
+@Rollback
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+public @interface IntegrationTest {
 
 }

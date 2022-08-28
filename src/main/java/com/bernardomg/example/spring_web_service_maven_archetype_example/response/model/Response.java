@@ -22,35 +22,23 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.spring_web_service_maven_archetype_example;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+package com.bernardomg.example.spring_web_service_maven_archetype_example.response.model;
 
 /**
- * Application runnable class. This allows Spring Boot to run the application.
+ * Response to the frontend.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  *
+ * @param <T>
+ *            response content type
  */
-@SpringBootApplication
-public class Application {
+public interface Response<T> {
 
     /**
-     * Runnable main method.
+     * Returns the response content.
      *
-     * @param args
-     *            execution parameters
+     * @return the response content
      */
-    public static void main(final String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
-
-    /**
-     * Default constructor.
-     */
-    public Application() {
-        super();
-    }
+    public T getContent();
 
 }

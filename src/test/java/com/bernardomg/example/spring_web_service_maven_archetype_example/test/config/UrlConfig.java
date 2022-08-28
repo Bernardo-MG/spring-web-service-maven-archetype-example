@@ -22,34 +22,24 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.spring_web_service_maven_archetype_example;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+package com.bernardomg.example.spring_web_service_maven_archetype_example.test.config;
 
 /**
- * Application runnable class. This allows Spring Boot to run the application.
+ * Contains configuration information for the controller URLs.
  *
  * @author Bernardo Mart&iacute;nez Garrido
- *
  */
-@SpringBootApplication
-public class Application {
+public final class UrlConfig {
 
     /**
-     * Runnable main method.
-     *
-     * @param args
-     *            execution parameters
+     * Entities REST URL.
      */
-    public static void main(final String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+    public static final String ENTITY = "/entity";
 
     /**
-     * Default constructor.
+     * Default constructor to avoid initialization.
      */
-    public Application() {
+    private UrlConfig() {
         super();
     }
 

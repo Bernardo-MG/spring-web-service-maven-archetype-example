@@ -22,35 +22,21 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.spring_web_service_maven_archetype_example;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+package com.bernardomg.example.spring_web_service_maven_archetype_example.error.model;
 
 /**
- * Application runnable class. This allows Spring Boot to run the application.
+ * Error object. Containing a message to tell which error ocurred.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  *
  */
-@SpringBootApplication
-public class Application {
+public interface Error {
 
     /**
-     * Runnable main method.
+     * Returns the error message.
      *
-     * @param args
-     *            execution parameters
+     * @return the error message.
      */
-    public static void main(final String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
-
-    /**
-     * Default constructor.
-     */
-    public Application() {
-        super();
-    }
+    public String getMessage();
 
 }

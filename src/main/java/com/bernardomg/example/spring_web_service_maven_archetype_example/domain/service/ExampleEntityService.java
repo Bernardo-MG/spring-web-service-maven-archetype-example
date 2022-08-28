@@ -22,35 +22,31 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.spring_web_service_maven_archetype_example;
+package com.bernardomg.example.spring_web_service_maven_archetype_example.domain.service;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.bernardomg.example.spring_web_service_maven_archetype_example.domain.model.ExampleEntity;
+import com.bernardomg.example.spring_web_service_maven_archetype_example.pagination.model.PageIterable;
+import com.bernardomg.example.spring_web_service_maven_archetype_example.pagination.model.Pagination;
+import com.bernardomg.example.spring_web_service_maven_archetype_example.pagination.model.Sort;
 
 /**
- * Application runnable class. This allows Spring Boot to run the application.
+ * Service for the example entity domain.
+ * <p>
+ * This is a domain service just to allow the endpoints querying the entities they are asked for.
  *
  * @author Bernardo Mart&iacute;nez Garrido
- *
  */
-@SpringBootApplication
-public class Application {
+public interface ExampleEntityService {
 
     /**
-     * Runnable main method.
+     * Returns all the entities from the DB.
      *
-     * @param args
-     *            execution parameters
+     * @param pagination
+     *            requested page info
+     * @param sort
+     *            requested sort info
+     * @return the persisted entities
      */
-    public static void main(final String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
-
-    /**
-     * Default constructor.
-     */
-    public Application() {
-        super();
-    }
+    public PageIterable<? extends ExampleEntity> getAll(final Pagination pagination, final Sort sort);
 
 }

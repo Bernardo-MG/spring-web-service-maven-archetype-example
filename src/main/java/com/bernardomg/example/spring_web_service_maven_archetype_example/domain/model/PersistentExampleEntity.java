@@ -22,35 +22,50 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.spring_web_service_maven_archetype_example;
+package com.bernardomg.example.spring_web_service_maven_archetype_example.domain.model;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import lombok.Data;
 
 /**
- * Application runnable class. This allows Spring Boot to run the application.
+ * Persistent entity for the example application.
+ * <p>
+ * This makes use of JPA annotations for the persistence configuration.
  *
  * @author Bernardo Mart&iacute;nez Garrido
- *
  */
-@SpringBootApplication
-public class Application {
+@Entity(name = "ExampleEntity")
+@Table(name = "example_entities")
+@Data
+public class PersistentExampleEntity implements ExampleEntity {
 
     /**
-     * Runnable main method.
-     *
-     * @param args
-     *            execution parameters
+     * Serialization ID.
      */
-    public static void main(final String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+    @Transient
+    private static final long serialVersionUID = 1328776989450853491L;
 
     /**
-     * Default constructor.
+     * Entity's ID.
      */
-    public Application() {
-        super();
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, unique = true)
+    private Integer           id               = -1;
+
+    /**
+     * Name of the entity.
+     * <p>
+     * This is to have additional data apart from the id, to be used on the tests.
+     */
+    @Column(name = "name", nullable = false, unique = true)
+    private String            name             = "";
 
 }

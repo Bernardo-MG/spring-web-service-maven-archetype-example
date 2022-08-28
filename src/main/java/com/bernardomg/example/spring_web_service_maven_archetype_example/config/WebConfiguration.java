@@ -24,13 +24,19 @@
 
 package com.bernardomg.example.spring_web_service_maven_archetype_example.config;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.bernardomg.example.spring_web_service_maven_archetype_example.pagination.argument.PaginationArgumentResolver;
+import com.bernardomg.example.spring_web_service_maven_archetype_example.pagination.argument.SortArgumentResolver;
+
 /**
  * Web configuration.
- * 
+ *
  * @author Bernardo Mart&iacute;nez Garrido
  *
  */
@@ -42,6 +48,12 @@ public class WebConfiguration implements WebMvcConfigurer {
      */
     public WebConfiguration() {
         super();
+    }
+
+    @Override
+    public void addArgumentResolvers(final List<HandlerMethodArgumentResolver> argumentResolvers) {
+        argumentResolvers.add(new PaginationArgumentResolver());
+        argumentResolvers.add(new SortArgumentResolver());
     }
 
     @Override

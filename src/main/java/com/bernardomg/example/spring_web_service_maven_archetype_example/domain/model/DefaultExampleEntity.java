@@ -22,35 +22,33 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.spring_web_service_maven_archetype_example;
+package com.bernardomg.example.spring_web_service_maven_archetype_example.domain.model;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import lombok.Data;
 
 /**
- * Application runnable class. This allows Spring Boot to run the application.
+ * Default entity for the example application.
  *
  * @author Bernardo Mart&iacute;nez Garrido
- *
  */
-@SpringBootApplication
-public class Application {
+@Data
+public class DefaultExampleEntity implements ExampleEntity {
 
     /**
-     * Runnable main method.
-     *
-     * @param args
-     *            execution parameters
+     * Serialization id.
      */
-    public static void main(final String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+    private static final long serialVersionUID = 7194459697873216367L;
 
     /**
-     * Default constructor.
+     * Entity's ID.
      */
-    public Application() {
-        super();
-    }
+    private Integer           id               = -1;
+
+    /**
+     * Name of the entity.
+     * <p>
+     * This is to have additional data apart from the id, to be used on the tests.
+     */
+    private String            name             = "";
 
 }

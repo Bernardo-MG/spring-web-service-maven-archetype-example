@@ -22,35 +22,65 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.spring_web_service_maven_archetype_example;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+package com.bernardomg.example.spring_web_service_maven_archetype_example.response.model;
 
 /**
- * Application runnable class. This allows Spring Boot to run the application.
+ * Paginated response to the frontend.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  *
+ * @param <T>
+ *            response content type
  */
-@SpringBootApplication
-public class Application {
+public interface PaginatedResponse<T> extends Response<T> {
 
     /**
-     * Runnable main method.
+     * Number of elements in the page.
      *
-     * @param args
-     *            execution parameters
+     * @return number of elements
      */
-    public static void main(final String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+    public Integer getElementsInPage();
 
     /**
-     * Default constructor.
+     * Flags this is as the first page.
+     *
+     * @return {@code true} if this is the first page, {@code false} otherwise
      */
-    public Application() {
-        super();
-    }
+    public Boolean getFirst();
+
+    /**
+     * Flags this is as the last page.
+     *
+     * @return {@code true} if this is the last page, {@code false} otherwise
+     */
+    public Boolean getLast();
+
+    /**
+     * Number of this page.
+     *
+     * @return the number of this page
+     */
+    public Integer getPageNumber();
+
+    /**
+     * Size of this page.
+     *
+     * @return the size of this page.
+     */
+    public Integer getSize();
+
+    /**
+     * Total number of elements among all the pages.
+     *
+     * @return the total number of elements
+     */
+    public Long getTotalElements();
+
+    /**
+     * Total number of pages.
+     *
+     * @return the total number of pages
+     */
+    public Integer getTotalPages();
 
 }

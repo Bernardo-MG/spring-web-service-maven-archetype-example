@@ -22,35 +22,47 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.spring_web_service_maven_archetype_example;
+package com.bernardomg.example.spring_web_service_maven_archetype_example.domain.model;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.io.Serializable;
 
 /**
- * Application runnable class. This allows Spring Boot to run the application.
+ * A simple entity to be used as an example.
  *
  * @author Bernardo Mart&iacute;nez Garrido
- *
  */
-@SpringBootApplication
-public class Application {
+public interface ExampleEntity extends Serializable {
 
     /**
-     * Runnable main method.
+     * Returns the identifier assigned to this entity.
+     * <p>
+     * If no identifier has been assigned yet, then the value is expected to be {@code null} or lower than zero.
      *
-     * @param args
-     *            execution parameters
+     * @return the entity's identifier
      */
-    public static void main(final String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+    public Integer getId();
 
     /**
-     * Default constructor.
+     * Returns the name of the entity.
+     *
+     * @return the entity's name
      */
-    public Application() {
-        super();
-    }
+    public String getName();
+
+    /**
+     * Sets the identifier assigned to this entity.
+     *
+     * @param identifier
+     *            the identifier for the entity
+     */
+    public void setId(final Integer identifier);
+
+    /**
+     * Changes the name of the entity.
+     *
+     * @param name
+     *            the name to set on the entity
+     */
+    public void setName(final String name);
 
 }

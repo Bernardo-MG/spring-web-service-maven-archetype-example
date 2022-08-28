@@ -22,35 +22,39 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.spring_web_service_maven_archetype_example;
+package com.bernardomg.example.spring_web_service_maven_archetype_example.config;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+
+import com.bernardomg.example.spring_web_service_maven_archetype_example.pagination.argument.PaginationArgumentResolver;
+import com.bernardomg.example.spring_web_service_maven_archetype_example.pagination.argument.SortArgumentResolver;
 
 /**
- * Application runnable class. This allows Spring Boot to run the application.
+ * Request configuration.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  *
  */
-@SpringBootApplication
-public class Application {
-
-    /**
-     * Runnable main method.
-     *
-     * @param args
-     *            execution parameters
-     */
-    public static void main(final String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+@Configuration
+public class RequestConfig {
 
     /**
      * Default constructor.
      */
-    public Application() {
+    public RequestConfig() {
         super();
+    }
+
+    @Bean("paginationArgumentResolver")
+    public HandlerMethodArgumentResolver getPaginationArgumentResolver() {
+        return new PaginationArgumentResolver();
+    }
+
+    @Bean("sortArgumentResolver")
+    public HandlerMethodArgumentResolver getSortArgumentResolver() {
+        return new SortArgumentResolver();
     }
 
 }

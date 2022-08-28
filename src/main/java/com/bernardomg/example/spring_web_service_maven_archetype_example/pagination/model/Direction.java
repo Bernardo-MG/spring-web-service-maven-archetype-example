@@ -22,35 +22,23 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.spring_web_service_maven_archetype_example;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+package com.bernardomg.example.spring_web_service_maven_archetype_example.pagination.model;
 
 /**
- * Application runnable class. This allows Spring Boot to run the application.
+ * Direction for sorting.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  *
  */
-@SpringBootApplication
-public class Application {
+public enum Direction {
 
     /**
-     * Runnable main method.
-     *
-     * @param args
-     *            execution parameters
+     * Ascending.
      */
-    public static void main(final String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
-
+    ASC,
     /**
-     * Default constructor.
+     * Descending.
      */
-    public Application() {
-        super();
-    }
+    DESC;
 
 }

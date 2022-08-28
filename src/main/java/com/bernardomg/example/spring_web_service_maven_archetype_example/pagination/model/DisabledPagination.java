@@ -22,35 +22,41 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.spring_web_service_maven_archetype_example;
+package com.bernardomg.example.spring_web_service_maven_archetype_example.pagination.model;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import lombok.Data;
+import lombok.NonNull;
 
 /**
- * Application runnable class. This allows Spring Boot to run the application.
+ * Disabled paginated data request. This serves as a null object to disable pagination.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  *
  */
-@SpringBootApplication
-public class Application {
+@Data
+public final class DisabledPagination implements Pagination {
 
     /**
-     * Runnable main method.
-     *
-     * @param args
-     *            execution parameters
+     * Singleton for disabled pagination.
      */
-    public static void main(final String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+    public static final Pagination INSTANCE = new DisabledPagination();
 
     /**
-     * Default constructor.
+     * Default page.
      */
-    public Application() {
-        super();
-    }
+    @NonNull
+    private final Integer          page     = -1;
+
+    /**
+     * Disabled pagination flag.
+     */
+    @NonNull
+    private final Boolean          paged    = false;
+
+    /**
+     * Default size.
+     */
+    @NonNull
+    private final Integer          size     = -1;
 
 }
